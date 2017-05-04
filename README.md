@@ -27,3 +27,7 @@ location = Axis{:location}([:here, :there])
 # create an axis array of binary variables, you can do:
 @axis_variable(m, in_contact[time=1:5], Bin)
 ```
+
+# Credits
+
+This macro was originally designed by @tkoolen. 
