@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/rdeits/AxisArrayVariables.jl.svg?branch=master)](https://travis-ci.org/rdeits/AxisArrayVariables.jl)
 [![codecov.io](http://codecov.io/github/rdeits/AxisArrayVariables.jl/coverage.svg?branch=master)](http://codecov.io/github/rdeits/AxisArrayVariables.jl?branch=master)
 
-This package provides a convenient way to declare [JuMP](https://github.com/JuliaOpt/JuMP.jl) variables which are stored in [AxisArrays](https://github.com/JuliaArrays/AxisArrays.jl) containers. This is useful if you have an optimization with multi-dimensional arrays of variables, and you don't want to keep track of your axes by their index. 
+This package provides a convenient way to declare [JuMP](https://github.com/JuliaOpt/JuMP.jl) variables which are stored in [AxisArrays](https://github.com/JuliaArrays/AxisArrays.jl) containers. This is useful if you have a model with multi-dimensional arrays of variables, and you don't want to keep track of your axes by their index. 
 
 ```julia
 using AxisArrayVariables
