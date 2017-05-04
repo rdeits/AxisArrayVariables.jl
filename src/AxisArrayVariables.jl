@@ -8,10 +8,12 @@ using MacroTools
 
 export @axis_variable
 
-@static if VERSION >= v"0.6-"  # arguments parse as :kw in 0.5 and := in 0.6
-    const kw_head = :(=)
+# Keyword arguments use :(=) on v0.6 and :kw on v0.5, and their escaping rules
+# are slightly different:
+@static if VERSION >= v"0.6-"
+    make_kwarg(key, val) = Expr(:(=), esc(key), esc(val))
 else
-    const kw_head = :kw
+    make_kwarg(key, val) = Expr(:kw, key, esc(val))
 end
 
 macro axis_variable(m, varexpr, args...)
@@ -26,10 +28,10 @@ macro axis_variable(m, varexpr, args...)
         error("Unrecognized expression")
     end
     if lb !== nothing
-        unshift!(jump_args, Expr(kw_head, esc(:lowerbound), esc(lb)))
+        unshift!(jump_args, make_kwarg(:lowerbound, lb))
     end
     if ub !== nothing
-        unshift!(jump_args, Expr(kw_head, esc(:upperbound), esc(ub)))
+        unshift!(jump_args, make_kwarg(:upperbound, ub))
     end
     axes = []
     domains = Expr[]
